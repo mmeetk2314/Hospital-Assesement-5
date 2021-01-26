@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Hospital_Assesement_5.Migrations
@@ -104,6 +105,8 @@ namespace Hospital_Assesement_5.Migrations
                 name: "IX_Patient_DoctorID",
                 table: "Patient",
                 column: "DoctorID");
+            var sqlFile = Path.Combine(".\\DatabaseScript", @"data.sql");
+            migrationBuilder.Sql(File.ReadAllText(sqlFile));
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
